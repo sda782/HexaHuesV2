@@ -5,34 +5,34 @@ using UnityEngine;
 
 public class WorldController : MonoBehaviour
 {
-    [SerializeField]
-    private int worldBorder;
+    private Vector2 worldBorder;
     [SerializeField]
     private GameObject borderObj;
     [SerializeField]
     private GameObject groundObj;
-    void Start()
+
+    public void GenWorldBorder(Vector2 size)
     {
-        genWorldBorder(10);
-        genWorldBorder(0);
-        int groundSize = worldBorder * 2;
-        groundObj.transform.localScale = new Vector2(groundSize, groundSize);
+        //GameObject border = Instantiate(borderObj);
+        LineRenderer line = borderObj.GetComponent<LineRenderer>();
+        line.SetPosition(0, new Vector2(-size.x, -size.y));
+        line.SetPosition(1, new Vector2(size.x, -size.y));
+        line.SetPosition(2, new Vector2(size.x, size.y));
+        line.SetPosition(3, new Vector2(-size.x, size.y));
+        //line.SetPosition(4, new Vector2(-worldBorder, -worldBorder));
+        worldBorder = size;
     }
 
-    void genWorldBorder(int offset)
+    public void SetGround(Vector2 size)
     {
-        GameObject border = Instantiate(borderObj);
-        LineRenderer line = border.GetComponent<LineRenderer>();
-        line.SetPosition(0, new Vector2(-worldBorder - offset, -worldBorder - offset));
-        line.SetPosition(1, new Vector2(worldBorder + offset, -worldBorder - offset));
-        line.SetPosition(2, new Vector2(worldBorder + offset, worldBorder + offset));
-        line.SetPosition(3, new Vector2(-worldBorder - offset, worldBorder + offset));
-        //line.SetPosition(4, new Vector2(-worldBorder, -worldBorder));
+        size *= 2;
+        //GameObject ground = Instantiate(groundObj);
+        groundObj.transform.localScale = size;
     }
     public bool OutSideBorder(Vector2 val, Vector2 mouse_val)
     {
-        return ((val.x <= -worldBorder || val.x >= worldBorder) && (mouse_val.x <= -worldBorder || mouse_val.x >= worldBorder))
-        || ((val.y <= -worldBorder || val.y >= worldBorder) && (mouse_val.y <= -worldBorder || mouse_val.y >= worldBorder));
+        return ((val.x <= -worldBorder.x || val.x >= worldBorder.x) && (mouse_val.x <= -worldBorder.x || mouse_val.x >= worldBorder.x))
+        || ((val.y <= -worldBorder.y || val.y >= worldBorder.y) && (mouse_val.y <= -worldBorder.y || mouse_val.y >= worldBorder.y));
     }
     /* public bool OutSideBorder(Vector2 val, Vector2 mouse_val)
     {

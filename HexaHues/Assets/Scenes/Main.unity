@@ -239,6 +239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 35
+  worldController: {fileID: 1718351740}
 --- !u!114 &742892039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -431,6 +432,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1718351739}
   - component: {fileID: 1718351738}
+  - component: {fileID: 1718351740}
   m_Layer: 0
   m_Name: WorldController
   m_TagString: Untagged
@@ -467,3 +469,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1718351740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718351737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58dee6b4095880a4582f786b4e252278, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  worldBorder: 10
+  borderObj: {fileID: 7214998838342632244, guid: e5064fa4f9be7c549b3e755da24110de, type: 3}

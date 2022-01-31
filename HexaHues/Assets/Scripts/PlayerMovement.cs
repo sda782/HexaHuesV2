@@ -8,7 +8,11 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
     private int speed;
+
+    [SerializeField]
+    private WorldController worldController;
     private Rigidbody2D rb;
+    private float dragFallOff = 0.9f;
 
     void Start()
     {
@@ -16,8 +20,6 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
-        if (transform.position.x >= -5 || transform.position.x <= 5) return;
-        if (transform.position.y >= -5 || transform.position.y <= 5) return;
         Move();
     }
     void FixedUpdate()
@@ -33,16 +35,21 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = Vector2.zero;
             return;
         }
-        rb.velocity *= 0.95f;
+        rb.velocity *= dragFallOff;
     }
 
     void Move()
     {
         if (Input.GetMouseButton(0))
         {
+            // Get world position for mouse click
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+            //check if in side border
+            if (worldController.OutSideBorder(transform.position, worldPosition)) return;
+
             Vector3 dir = (worldPosition - transform.position);
-            if (dir.magnitude <= 1f) return;
+            if (dir.magnitude <= 0.1f) return;
             rb.AddForce(dir.normalized * speed * 100, ForceMode2D.Impulse);
         }
 

@@ -16,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
+        if (transform.position.x >= -5 || transform.position.x <= 5) return;
+        if (transform.position.y >= -5 || transform.position.y <= 5) return;
         Move();
     }
     void FixedUpdate()

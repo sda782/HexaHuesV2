@@ -10,6 +10,6 @@
 -   World Generation
 
 #   Need
--   Border should mimic the aspect of the grid
++   Border should mimic the aspect of the grid
++   Grid should recenter on change
 -   Hard stop when outside the border
--   Grid should recenter on change

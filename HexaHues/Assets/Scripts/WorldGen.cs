@@ -7,12 +7,12 @@ public class WorldGen : MonoBehaviour
     [SerializeField]
     private float cellSize = 1f;
     [SerializeField]
+    private float cellOffset = 1.2f;
+    [SerializeField]
     private GameObject cell;
 
     [SerializeField]
     private int grid_size;
-    [SerializeField]
-    private float squareness = 1.5f;
     private List<GameObject> cells;
     public List<GameObject> GridCells { get => cells; }
     private WorldController worldController;
@@ -53,8 +53,8 @@ public class WorldGen : MonoBehaviour
         {
             for (int j = 0; j < grid_size; j++)
             {
-                pos.y = i * cellSize;
-                pos.x = j * cellSize;
+                pos.y = i * cellSize * cellOffset;
+                pos.x = j * cellSize * cellOffset;
                 GameObject spawned_cell = Instantiate(cell, new Vector3(pos.x, pos.y, 10), cell.transform.rotation);
                 spawned_cell.transform.localScale = Vector3.one * cellSize;
                 spawned_cell.transform.SetParent(transform);
@@ -62,12 +62,10 @@ public class WorldGen : MonoBehaviour
                 cells.Add(spawned_cell);
             }
         }
+
         //  Offset so middle is at 0,0
-
-        //  FIX OFF SET FOR ALL SIZES
-
-        float globalOffsetX = (grid_size + (grid_size - 1) / 2);
-        float globalOffsetY = (grid_size + (grid_size - 1) / 2);
+        float globalOffsetX = (grid_size / 2) * cellSize * cellOffset;
+        float globalOffsetY = (grid_size / 2) * cellSize * cellOffset;
         Debug.Log($"GX {globalOffsetX}, GY {globalOffsetY}");
         transform.position = new Vector2(-globalOffsetX, -globalOffsetY);
     }

@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private WorldController worldController;
     private Rigidbody2D rb;
     private float dragFallOff = 0.9f;
+    private bool isoutside = false;
 
     void Start()
     {
@@ -47,7 +48,6 @@ public class PlayerMovement : MonoBehaviour
 
             //check if in side border
             if (worldController.OutSideBorder(transform.position, worldPosition)) return;
-
             Vector3 dir = (worldPosition - transform.position);
             if (dir.magnitude <= 0.1f) return;
             rb.AddForce(dir.normalized * speed * 100, ForceMode2D.Impulse);

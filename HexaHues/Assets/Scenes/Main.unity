@@ -164,7 +164,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -577,9 +577,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellSize: 3
+  cellOffset: 1.2
   cell: {fileID: 6970541467626034209, guid: 2520ea1a7001e6648aa1327459b6e412, type: 3}
-  grid_size: 5
-  squareness: 1
+  grid_size: 1
 --- !u!4 &1718351739
 Transform:
   m_ObjectHideFlags: 0

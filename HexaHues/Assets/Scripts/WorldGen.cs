@@ -16,10 +16,12 @@ public class WorldGen : MonoBehaviour
     private List<GameObject> cells;
     public List<GameObject> GridCells { get => cells; }
     private WorldController worldController;
+    private ThemeGen themeGen;
 
     void Start()
     {
         worldController = GetComponent<WorldController>();
+        themeGen = GetComponent<ThemeGen>();
         cells = new List<GameObject>();
         setWorld();
     }
@@ -58,6 +60,7 @@ public class WorldGen : MonoBehaviour
                 GameObject spawned_cell = Instantiate(cell, new Vector3(pos.x, pos.y, 10), cell.transform.rotation);
                 spawned_cell.transform.localScale = Vector3.one * cellSize;
                 spawned_cell.transform.SetParent(transform);
+                setPlatformColor(spawned_cell);
                 //  Add to list of cells
                 cells.Add(spawned_cell);
             }
@@ -66,8 +69,14 @@ public class WorldGen : MonoBehaviour
         //  Offset so middle is at 0,0
         float globalOffsetX = (grid_size / 2) * cellSize * cellOffset;
         float globalOffsetY = (grid_size / 2) * cellSize * cellOffset;
-        Debug.Log($"GX {globalOffsetX}, GY {globalOffsetY}");
+        //Debug.Log($"GX {globalOffsetX}, GY {globalOffsetY}");
         transform.position = new Vector2(-globalOffsetX, -globalOffsetY);
+    }
+
+    private void setPlatformColor(GameObject platform)
+    {
+        SpriteRenderer sr = platform.GetComponent<SpriteRenderer>();
+        sr.color = themeGen.CurrentTheme.GetRandomColor;
     }
 
 }

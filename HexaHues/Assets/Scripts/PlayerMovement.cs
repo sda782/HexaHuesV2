@@ -13,7 +13,6 @@ public class PlayerMovement : MonoBehaviour
     private WorldController worldController;
     private Rigidbody2D rb;
     private float dragFallOff = 0.9f;
-    private bool isoutside = false;
 
     void Start()
     {

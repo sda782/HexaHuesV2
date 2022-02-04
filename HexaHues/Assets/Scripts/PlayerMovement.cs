@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
     private int speed;
+    [SerializeField]
+    private int maxSpeed;
 
     [SerializeField]
     private WorldController worldController;
@@ -29,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Drag()
     {
-        if (rb.velocity.magnitude > 30) rb.velocity = rb.velocity.normalized * 30;
+        if (rb.velocity.magnitude > maxSpeed) rb.velocity = rb.velocity.normalized * maxSpeed;
         if (rb.velocity.magnitude <= 0.05f)
         {
             rb.velocity = Vector2.zero;
@@ -40,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Move()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(1))
         {
             // Get world position for mouse click
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);

@@ -17,6 +17,8 @@ public class WorldGen : MonoBehaviour
     public List<GameObject> GridCells { get => cells; }
     private WorldController worldController;
     private ThemeGen themeGen;
+    [SerializeField]
+    private PlayerController playerController;
 
     void Start()
     {
@@ -24,6 +26,7 @@ public class WorldGen : MonoBehaviour
         themeGen = GetComponent<ThemeGen>();
         cells = new List<GameObject>();
         setWorld();
+
     }
     void Update()
     {
@@ -46,6 +49,7 @@ public class WorldGen : MonoBehaviour
         Vector2 worldSize = new Vector2(grid_size * cellSize, grid_size * cellSize);
         worldController.GenWorldBorder(worldSize);
         worldController.SetGround(worldSize);
+        playerController.SetPlayerColor(getRandomColorFromPlatform());
     }
 
     private void spawn_grid()
@@ -77,6 +81,11 @@ public class WorldGen : MonoBehaviour
     {
         SpriteRenderer sr = platform.GetComponent<SpriteRenderer>();
         sr.color = themeGen.CurrentTheme.GetRandomColor;
+    }
+    private Color getRandomColorFromPlatform()
+    {
+        SpriteRenderer cellSR = cells[Random.Range(0, cells.Count)].GetComponent<SpriteRenderer>();
+        return cellSR.color;
     }
 
 }

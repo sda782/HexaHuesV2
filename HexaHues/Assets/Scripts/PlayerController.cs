@@ -4,13 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    void Start()
+    public void SetPlayerColor(Color color)
     {
-
-    }
-
-    void Update()
-    {
-
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        sr.color = color;
     }
 }

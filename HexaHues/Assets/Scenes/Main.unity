@@ -243,7 +243,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46d0acbb2eb49f24ea8fa141dd570d99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 35
+  speed: 20
+  maxSpeed: 20
   worldController: {fileID: 1718351740}
 --- !u!114 &742892039
 MonoBehaviour:
@@ -581,6 +582,7 @@ MonoBehaviour:
   cellOffset: 1.2
   cell: {fileID: 6970541467626034209, guid: 2520ea1a7001e6648aa1327459b6e412, type: 3}
   grid_size: 3
+  playerController: {fileID: 742892039}
 --- !u!4 &1718351739
 Transform:
   m_ObjectHideFlags: 0

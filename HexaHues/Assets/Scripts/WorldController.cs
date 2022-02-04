@@ -13,20 +13,18 @@ public class WorldController : MonoBehaviour
 
     public void GenWorldBorder(Vector2 size)
     {
-        //GameObject border = Instantiate(borderObj);
+        size /= 1.5f;
         LineRenderer line = borderObj.GetComponent<LineRenderer>();
         line.SetPosition(0, new Vector2(-size.x, -size.y));
         line.SetPosition(1, new Vector2(size.x, -size.y));
         line.SetPosition(2, new Vector2(size.x, size.y));
         line.SetPosition(3, new Vector2(-size.x, size.y));
-        //line.SetPosition(4, new Vector2(-worldBorder, -worldBorder));
         worldBorder = size;
     }
 
     public void SetGround(Vector2 size)
     {
         size *= 2;
-        //GameObject ground = Instantiate(groundObj);
         groundObj.transform.localScale = size;
     }
     public bool OutSideBorder(Vector2 val, Vector2 mouse_val)

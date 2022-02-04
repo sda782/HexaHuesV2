@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WorldGen : MonoBehaviour
 {
@@ -50,6 +51,15 @@ public class WorldGen : MonoBehaviour
         worldController.GenWorldBorder(worldSize);
         worldController.SetGround(worldSize);
         playerController.SetPlayerColor(getRandomColorFromPlatform());
+        if (Screen.width > Screen.height)
+        {
+            worldController.SetCamSize(grid_size * 3);
+        }
+        else
+        {
+            worldController.SetCamSize(grid_size * 6);
+
+        }
     }
 
     private void spawn_grid()

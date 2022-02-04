@@ -22,6 +22,11 @@ public class WorldController : MonoBehaviour
         worldBorder = size;
     }
 
+    public void SetCamSize(float size)
+    {
+        Camera.main.orthographicSize = size;
+    }
+
     public void SetGround(Vector2 size)
     {
         size *= 2;

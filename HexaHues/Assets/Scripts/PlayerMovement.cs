@@ -50,6 +50,5 @@ public class PlayerMovement : MonoBehaviour
             if (dir.magnitude <= 0.1f) return;
             rb.AddForce(dir.normalized * speed * 100, ForceMode2D.Impulse);
         }
-
     }
 }

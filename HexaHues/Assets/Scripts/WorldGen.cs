@@ -33,14 +33,19 @@ public class WorldGen : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            grid_size += 2;
-            transform.position = Vector2.zero;
-            foreach (var cell in cells)
-            {
-                Destroy(cell);
-            }
-            setWorld();
+            nextLevel();
         }
+    }
+
+    private void nextLevel()
+    {
+        grid_size += 2;
+        transform.position = Vector2.zero;
+        foreach (var cell in cells)
+        {
+            Destroy(cell);
+        }
+        setWorld();
     }
 
     private void setWorld()
@@ -52,14 +57,6 @@ public class WorldGen : MonoBehaviour
         worldController.SetGround(worldSize);
         playerController.SetPlayerColor(getRandomColorFromPlatform());
         worldController.SetCamSize(Screen.width > Screen.height ? grid_size * 3 : grid_size * 5);
-        /* if (Screen.width > Screen.height)
-        {
-            worldController.SetCamSize(grid_size * 3);
-        }
-        else
-        {
-            worldController.SetCamSize(grid_size * 6);
-        } */
     }
 
     private void spawn_grid()
@@ -79,8 +76,6 @@ public class WorldGen : MonoBehaviour
                 cells.Add(spawned_cell);
             }
         }
-
-        //  Offset so middle is at 0,0
         float globalOffsetX = (grid_size / 2) * cellSize * cellOffset;
         float globalOffsetY = (grid_size / 2) * cellSize * cellOffset;
         transform.position = new Vector2(-globalOffsetX, -globalOffsetY);
@@ -93,7 +88,8 @@ public class WorldGen : MonoBehaviour
     }
     private Color getRandomColorFromPlatform()
     {
-        if (cells.Count <= 1) return cells[0].GetComponent<SpriteRenderer>().color;
+        if (cells.Count == 0) return themeGen.CurrentTheme.Colors[0];
+        if (cells.Count == 1) return cells[0].GetComponent<SpriteRenderer>().color;
         SpriteRenderer cellSR = cells[Random.Range(0, cells.Count)].GetComponent<SpriteRenderer>();
         return cellSR.color;
     }
@@ -106,10 +102,17 @@ public class WorldGen : MonoBehaviour
 
     public void DestoryPlatform(GameObject player)
     {
+        if (cells.Count <= 1)
+        {
+            Debug.Log("NextLEVEL");
+            nextLevel();
+            return;
+        }
         GameObject toremove = Player_in_cell(player.transform);
         if (!IsSameColor(toremove, player)) return;
         cells.Remove(toremove);
         Destroy(toremove);
+        playerController.SetPlayerColor(getRandomColorFromPlatform());
     }
     public GameObject Player_in_cell(Transform player_transform)
     {

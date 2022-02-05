@@ -44,10 +44,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetMouseButton(1))
         {
-            // Get world position for mouse click
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-            //check if in side border
             if (worldController.OutSideBorder(transform.position, worldPosition)) return;
             Vector3 dir = (worldPosition - transform.position);
             if (dir.magnitude <= 0.1f) return;

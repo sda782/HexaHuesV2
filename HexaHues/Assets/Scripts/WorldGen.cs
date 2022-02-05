@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class WorldGen : MonoBehaviour
@@ -50,16 +51,15 @@ public class WorldGen : MonoBehaviour
         worldController.GenWorldBorder(worldSize);
         worldController.SetGround(worldSize);
         playerController.SetPlayerColor(getRandomColorFromPlatform());
-
-        if (Screen.width > Screen.height)
+        worldController.SetCamSize(Screen.width > Screen.height ? grid_size * 3 : grid_size * 5);
+        /* if (Screen.width > Screen.height)
         {
             worldController.SetCamSize(grid_size * 3);
         }
         else
         {
             worldController.SetCamSize(grid_size * 6);
-
-        }
+        } */
     }
 
     private void spawn_grid()
@@ -83,7 +83,6 @@ public class WorldGen : MonoBehaviour
         //  Offset so middle is at 0,0
         float globalOffsetX = (grid_size / 2) * cellSize * cellOffset;
         float globalOffsetY = (grid_size / 2) * cellSize * cellOffset;
-        //Debug.Log($"GX {globalOffsetX}, GY {globalOffsetY}");
         transform.position = new Vector2(-globalOffsetX, -globalOffsetY);
     }
 
@@ -94,32 +93,38 @@ public class WorldGen : MonoBehaviour
     }
     private Color getRandomColorFromPlatform()
     {
-        if (cells.Count <= 1)
-        {
-            return cells[0].GetComponent<SpriteRenderer>().color;
-        }
+        if (cells.Count <= 1) return cells[0].GetComponent<SpriteRenderer>().color;
         SpriteRenderer cellSR = cells[Random.Range(0, cells.Count)].GetComponent<SpriteRenderer>();
         return cellSR.color;
     }
 
-    public void DestoryPlatform(GameObject player)
+    private bool IsSameColor(GameObject cell, GameObject player)
     {
-        Destroy(FindNearestPlatform(player));
-    }
-    private GameObject FindNearestPlatform(GameObject player)
-    {
-        float dist = grid_size * 2;
-        GameObject objToReturn = null;
-        foreach (var g in cells)
-        {
-            float newDist = Vector3.Distance(g.transform.position, player.transform.position);
-            if (newDist < dist)
-            {
-                dist = newDist;
-                objToReturn = g;
-            }
-        }
-        return objToReturn;
+        if (cell.GetComponent<SpriteRenderer>().color == player.GetComponent<SpriteRenderer>().color) return true;
+        return false;
     }
 
+    public void DestoryPlatform(GameObject player)
+    {
+        GameObject toremove = Player_in_cell(player.transform);
+        if (!IsSameColor(toremove, player)) return;
+        cells.Remove(toremove);
+        Destroy(toremove);
+    }
+    public GameObject Player_in_cell(Transform player_transform)
+    {
+        float dist = 0;
+        float min_dist = grid_size * cellSize * 2;
+        GameObject temp_obj = cells[0];
+        foreach (GameObject cell in cells)
+        {
+            dist = Vector3.Distance(player_transform.position, cell.transform.position);
+            if (dist < min_dist)
+            {
+                min_dist = dist;
+                temp_obj = cell;
+            }
+        }
+        return temp_obj;
+    }
 }

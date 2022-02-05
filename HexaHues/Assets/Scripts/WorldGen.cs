@@ -15,7 +15,6 @@ public class WorldGen : MonoBehaviour
     [SerializeField]
     private int grid_size;
     private List<GameObject> cells;
-    public List<GameObject> GridCells { get => cells; }
     private WorldController worldController;
     private ThemeGen themeGen;
     [SerializeField]
@@ -51,6 +50,7 @@ public class WorldGen : MonoBehaviour
         worldController.GenWorldBorder(worldSize);
         worldController.SetGround(worldSize);
         playerController.SetPlayerColor(getRandomColorFromPlatform());
+
         if (Screen.width > Screen.height)
         {
             worldController.SetCamSize(grid_size * 3);
@@ -94,8 +94,32 @@ public class WorldGen : MonoBehaviour
     }
     private Color getRandomColorFromPlatform()
     {
+        if (cells.Count <= 1)
+        {
+            return cells[0].GetComponent<SpriteRenderer>().color;
+        }
         SpriteRenderer cellSR = cells[Random.Range(0, cells.Count)].GetComponent<SpriteRenderer>();
         return cellSR.color;
+    }
+
+    public void DestoryPlatform(GameObject player)
+    {
+        Destroy(FindNearestPlatform(player));
+    }
+    private GameObject FindNearestPlatform(GameObject player)
+    {
+        float dist = grid_size * 2;
+        GameObject objToReturn = null;
+        foreach (var g in cells)
+        {
+            float newDist = Vector3.Distance(g.transform.position, player.transform.position);
+            if (newDist < dist)
+            {
+                dist = newDist;
+                objToReturn = g;
+            }
+        }
+        return objToReturn;
     }
 
 }

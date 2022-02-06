@@ -10,11 +10,11 @@
 -   Color Theme
     +   Hardcoded colours
     -   Color menu
--   Point system
-    -   Time based?, Point based?, progression based?
++   Randomize the next player color the get
 
 #   Working on now
--   Randomize the next player color the get
+-   Point system
+    -   Time based?, Point based?, progression based?
 
 #   Need
 

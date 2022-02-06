@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
 
@@ -22,6 +23,8 @@ public class WorldGen : MonoBehaviour
     private PlayerController playerController;
     [SerializeField]
     private PopAnimation popAni;
+    [field: SerializeField]
+    public UnityEvent<bool> platformRemove;
 
     void Start()
     {
@@ -97,7 +100,9 @@ public class WorldGen : MonoBehaviour
             return;
         }
         GameObject toremove = Player_in_cell(player.transform);
-        if (!IsSameColor(toremove, player)) return;
+        bool issamecolor = IsSameColor(toremove, player);
+        platformRemove?.Invoke(issamecolor);
+        if (!issamecolor) return;
         //worldController.SpawnParticle(toremove.transform.position, toremove.GetComponent<SpriteRenderer>().color);
         cells.Remove(toremove);
         playerController.SetPlayerColor(getRandomColorFromPlatform());

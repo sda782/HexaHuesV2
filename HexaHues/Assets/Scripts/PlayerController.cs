@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public UnityEvent<GameObject> RemovePlatform;
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) TriggerPlatform();
+        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)) TriggerPlatform();
     }
 
     private void TriggerPlatform()

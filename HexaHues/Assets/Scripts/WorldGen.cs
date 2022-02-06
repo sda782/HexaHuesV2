@@ -29,22 +29,16 @@ public class WorldGen : MonoBehaviour
         setWorld();
 
     }
-    void Update()
+    /* void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            nextLevel();
-        }
-    }
+        if (Input.GetKeyDown(KeyCode.Space)) nextLevel();
+    } */
 
     private void nextLevel()
     {
         grid_size += 2;
         transform.position = Vector2.zero;
-        foreach (var cell in cells)
-        {
-            Destroy(cell);
-        }
+        foreach (var cell in cells) Destroy(cell);
         setWorld();
     }
 
@@ -72,7 +66,6 @@ public class WorldGen : MonoBehaviour
                 spawned_cell.transform.localScale = Vector3.one * cellSize;
                 spawned_cell.transform.SetParent(transform);
                 setPlatformColor(spawned_cell);
-                //  Add to list of cells
                 cells.Add(spawned_cell);
             }
         }
@@ -93,18 +86,10 @@ public class WorldGen : MonoBehaviour
         SpriteRenderer cellSR = cells[Random.Range(0, cells.Count)].GetComponent<SpriteRenderer>();
         return cellSR.color;
     }
-
-    private bool IsSameColor(GameObject cell, GameObject player)
-    {
-        if (cell.GetComponent<SpriteRenderer>().color == player.GetComponent<SpriteRenderer>().color) return true;
-        return false;
-    }
-
     public void DestoryPlatform(GameObject player)
     {
         if (cells.Count <= 1)
         {
-            Debug.Log("NextLEVEL");
             nextLevel();
             return;
         }
@@ -114,7 +99,12 @@ public class WorldGen : MonoBehaviour
         Destroy(toremove);
         playerController.SetPlayerColor(getRandomColorFromPlatform());
     }
-    public GameObject Player_in_cell(Transform player_transform)
+    private bool IsSameColor(GameObject cell, GameObject player)
+    {
+        if (cell.GetComponent<SpriteRenderer>().color == player.GetComponent<SpriteRenderer>().color) return true;
+        return false;
+    }
+    private GameObject Player_in_cell(Transform player_transform)
     {
         float dist = 0;
         float min_dist = grid_size * cellSize * 2;

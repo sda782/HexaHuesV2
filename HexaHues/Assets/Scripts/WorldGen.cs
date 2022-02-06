@@ -69,7 +69,7 @@ public class WorldGen : MonoBehaviour
                 spawned_cell.transform.SetParent(transform);
                 setPlatformColor(spawned_cell);
                 cells.Add(spawned_cell);
-                StartCoroutine(popAni.Pop_in(spawned_cell, 0.5f, () => { Debug.Log("POP"); }));
+                StartCoroutine(popAni.Pop_in(spawned_cell, 0.5f, () => { }));
             }
         }
         float globalOffsetX = (grid_size / 2) * cellSize * cellOffset;

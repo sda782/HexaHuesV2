@@ -17,3 +17,9 @@
 -   Randomize the next player color the get
 
 #   Need
+
+
+#   Ideas
+-   PowerUP
+    -   Turbo (2s speed boost, 10s CD)
+    -   All Color (can get all colors for 2s)

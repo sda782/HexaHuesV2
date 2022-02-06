@@ -42,13 +42,13 @@ public class PlayerMovement : MonoBehaviour
 
     void Move()
     {
-        if (Input.GetMouseButton(1))
-        {
-            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            if (worldController.OutSideBorder(transform.position, worldPosition)) return;
-            Vector3 dir = (worldPosition - transform.position);
-            if (dir.magnitude <= 0.1f) return;
-            rb.AddForce(dir.normalized * speed * 100, ForceMode2D.Impulse);
-        }
+        /* if (Input.GetMouseButton(1))
+        { */
+        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        if (worldController.OutSideBorder(transform.position, worldPosition)) return;
+        Vector3 dir = (worldPosition - transform.position);
+        if (dir.magnitude <= 0.1f) return;
+        rb.AddForce(dir.normalized * speed * 100, ForceMode2D.Impulse);
+        //}
     }
 }

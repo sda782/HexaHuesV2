@@ -20,6 +20,8 @@ public class WorldGen : MonoBehaviour
     private ThemeGen themeGen;
     [SerializeField]
     private PlayerController playerController;
+    [SerializeField]
+    private PopAnimation popAni;
 
     void Start()
     {
@@ -67,6 +69,7 @@ public class WorldGen : MonoBehaviour
                 spawned_cell.transform.SetParent(transform);
                 setPlatformColor(spawned_cell);
                 cells.Add(spawned_cell);
+                StartCoroutine(popAni.Pop_in(spawned_cell, 0.5f, () => { Debug.Log("POP"); }));
             }
         }
         float globalOffsetX = (grid_size / 2) * cellSize * cellOffset;
@@ -97,8 +100,8 @@ public class WorldGen : MonoBehaviour
         if (!IsSameColor(toremove, player)) return;
         //worldController.SpawnParticle(toremove.transform.position, toremove.GetComponent<SpriteRenderer>().color);
         cells.Remove(toremove);
-        Destroy(toremove);
         playerController.SetPlayerColor(getRandomColorFromPlatform());
+        StartCoroutine(popAni.Pop_out(toremove, 0.75f, () => Destroy(toremove)));
     }
     private bool IsSameColor(GameObject cell, GameObject player)
     {

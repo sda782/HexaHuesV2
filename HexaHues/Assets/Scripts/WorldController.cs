@@ -10,6 +10,13 @@ public class WorldController : MonoBehaviour
     private GameObject borderObj;
     [SerializeField]
     private GameObject groundObj;
+    [SerializeField]
+    private ParticleSystem pSystem;
+    private ParticleSystem.MainModule main;
+    void Start()
+    {
+        main = pSystem.main;
+    }
 
     public void GenWorldBorder(Vector2 size)
     {
@@ -36,6 +43,13 @@ public class WorldController : MonoBehaviour
     {
         return ((val.x <= -worldBorder.x || val.x >= worldBorder.x) && (mouse_val.x <= -worldBorder.x || mouse_val.x >= worldBorder.x))
         || ((val.y <= -worldBorder.y || val.y >= worldBorder.y) && (mouse_val.y <= -worldBorder.y || mouse_val.y >= worldBorder.y));
+    }
+
+    public void SpawnParticle(Vector3 cell, Color color)
+    {
+        main.startColor = color;
+        pSystem.gameObject.transform.position = cell;
+        pSystem.Play();
     }
     /* public bool OutSideBorder(Vector2 val, Vector2 mouse_val)
     {

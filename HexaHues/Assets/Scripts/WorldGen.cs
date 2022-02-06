@@ -95,6 +95,7 @@ public class WorldGen : MonoBehaviour
         }
         GameObject toremove = Player_in_cell(player.transform);
         if (!IsSameColor(toremove, player)) return;
+        //worldController.SpawnParticle(toremove.transform.position, toremove.GetComponent<SpriteRenderer>().color);
         cells.Remove(toremove);
         Destroy(toremove);
         playerController.SetPlayerColor(getRandomColorFromPlatform());

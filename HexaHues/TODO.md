@@ -1,20 +1,25 @@
 #   TODO
--   Score system
--   Click on platforms
++   Click on platforms
 +   Randomize platform color
--   Multiplayer?
--   World Generation
++   World Generation
     +   Border should mimic the aspect of the grid
     +   Grid should recenter on change
-    -   Hard stop when outside the border
++   Randomize the next player color the get
++   Point system
+    +   Time based?, Point based?, progression based?
 -   Color Theme
     +   Hardcoded colours
+    -   Dark mode
     -   Color menu
-+   Randomize the next player color the get
+-   Sound
+    -   Music
+    -   Sound effects
+-   Game Menu
+    -   Title menu
+    -   Setting menu
+    -   Pause menu
 
 #   Working on now
--   Point system
-    -   Time based?, Point based?, progression based?
 
 #   Need
 

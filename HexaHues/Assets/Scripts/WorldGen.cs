@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class WorldGen : MonoBehaviour
@@ -34,10 +35,6 @@ public class WorldGen : MonoBehaviour
         setWorld();
 
     }
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.C)) nextLevel();
-    }
 
     private void nextLevel()
     {
@@ -56,6 +53,11 @@ public class WorldGen : MonoBehaviour
         worldController.SetGround(worldSize);
         playerController.SetPlayerColor(getRandomColorFromPlatform());
         worldController.SetCamSize(Screen.width > Screen.height ? grid_size * 3 : grid_size * 5);
+    }
+
+    public void endGame()
+    {
+        SceneManager.LoadScene("Menu");
     }
 
     private void spawn_grid()

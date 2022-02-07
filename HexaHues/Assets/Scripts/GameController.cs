@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
@@ -11,6 +12,8 @@ public class GameController : MonoBehaviour
     private Text text_score;
     [SerializeField]
     private Text text_lives;
+    [field: SerializeField]
+    public UnityEvent GameOver;
 
     public void AddPoint(bool isSameColor)
     {
@@ -24,5 +27,6 @@ public class GameController : MonoBehaviour
         if (isSameColor) return;
         lives--;
         text_lives.text = $"Lives : {lives}";
+        if (lives == 0) GameOver?.Invoke();
     }
 }

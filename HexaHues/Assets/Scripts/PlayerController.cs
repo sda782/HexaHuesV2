@@ -11,6 +11,12 @@ public class PlayerController : MonoBehaviour
     private TrailRenderer tr;
     void Update()
     {
+        if (Input.touchCount == 2)
+        {
+            Touch touch = Input.GetTouch(1);
+            if (touch.phase == TouchPhase.Began) TriggerPlatform();
+
+        }
         if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)) TriggerPlatform();
     }
 

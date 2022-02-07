@@ -34,10 +34,10 @@ public class WorldGen : MonoBehaviour
         setWorld();
 
     }
-    /* void Update()
+    void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) nextLevel();
-    } */
+        if (Input.GetKeyDown(KeyCode.C)) nextLevel();
+    }
 
     private void nextLevel()
     {

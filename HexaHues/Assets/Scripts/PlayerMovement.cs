@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
-        Move();
+        InputManager();
     }
     void FixedUpdate()
     {
@@ -40,15 +40,22 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity *= dragFallOff;
     }
 
-    void Move()
+    void Move(Vector2 pos)
     {
-        /* if (Input.GetMouseButton(1))
-        { */
-        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(pos);
         if (worldController.OutSideBorder(transform.position, worldPosition)) return;
         Vector3 dir = (worldPosition - transform.position);
         if (dir.magnitude <= 0.1f) return;
         rb.AddForce(dir.normalized * speed * 100, ForceMode2D.Impulse);
-        //}
+    }
+    void InputManager()
+    {
+        if (Input.GetMouseButton(1)) Move(Input.mousePosition);
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+            if (touch.phase == TouchPhase.Moved) Move(touch.position);
+        }
     }
 }

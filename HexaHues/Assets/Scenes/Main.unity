@@ -650,6 +650,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Border
       objectReference: {fileID: 0}
+    - target: {fileID: 7214998838342632245, guid: e5064fa4f9be7c549b3e755da24110de, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.b
+      value: 0.5188679
+      objectReference: {fileID: 0}
+    - target: {fileID: 7214998838342632245, guid: e5064fa4f9be7c549b3e755da24110de, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.g
+      value: 0.5188679
+      objectReference: {fileID: 0}
+    - target: {fileID: 7214998838342632245, guid: e5064fa4f9be7c549b3e755da24110de, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.r
+      value: 0.5188679
+      objectReference: {fileID: 0}
+    - target: {fileID: 7214998838342632245, guid: e5064fa4f9be7c549b3e755da24110de, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.b
+      value: 0.5188679
+      objectReference: {fileID: 0}
+    - target: {fileID: 7214998838342632245, guid: e5064fa4f9be7c549b3e755da24110de, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.g
+      value: 0.5188679
+      objectReference: {fileID: 0}
+    - target: {fileID: 7214998838342632245, guid: e5064fa4f9be7c549b3e755da24110de, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.r
+      value: 0.5188679
+      objectReference: {fileID: 0}
     - target: {fileID: 7214998838342632246, guid: e5064fa4f9be7c549b3e755da24110de, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -794,6 +818,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ground
       objectReference: {fileID: 0}
+    - target: {fileID: 672448551267263754, guid: a81cf93679c35e74797260475f661c09, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 672448551267263756, guid: a81cf93679c35e74797260475f661c09, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -851,7 +879,6 @@ GameObject:
   - component: {fileID: 1718351739}
   - component: {fileID: 1718351738}
   - component: {fileID: 1718351740}
-  - component: {fileID: 1718351741}
   - component: {fileID: 1718351742}
   m_Layer: 0
   m_Name: WorldController
@@ -934,18 +961,6 @@ MonoBehaviour:
   borderObj: {fileID: 323153205}
   groundObj: {fileID: 1016251672}
   pSystem: {fileID: 1792141232}
---- !u!114 &1718351741
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1718351737}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16407cb1df72b514a8473ef141966c26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1718351742
 MonoBehaviour:
   m_ObjectHideFlags: 0

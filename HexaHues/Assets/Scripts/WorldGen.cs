@@ -30,10 +30,9 @@ public class WorldGen : MonoBehaviour
     void Start()
     {
         worldController = GetComponent<WorldController>();
-        themeGen = GetComponent<ThemeGen>();
         cells = new List<GameObject>();
         setWorld();
-
+        ThemeGen.LoadTheme();
     }
 
     private void nextLevel()
@@ -50,7 +49,6 @@ public class WorldGen : MonoBehaviour
         spawn_grid();
         Vector2 worldSize = new Vector2(grid_size * cellSize, grid_size * cellSize);
         worldController.GenWorldBorder(worldSize);
-        worldController.SetGround(worldSize);
         playerController.SetPlayerColor(getRandomColorFromPlatform());
         worldController.SetCamSize(Screen.width > Screen.height ? grid_size * 3 : grid_size * 5);
     }
@@ -85,11 +83,11 @@ public class WorldGen : MonoBehaviour
     private void setPlatformColor(GameObject platform)
     {
         SpriteRenderer sr = platform.GetComponent<SpriteRenderer>();
-        sr.color = themeGen.CurrentTheme.GetRandomColor;
+        sr.color = ThemeGen.CurrentTheme.GetRandomColor;
     }
     private Color getRandomColorFromPlatform()
     {
-        if (cells.Count == 0) return themeGen.CurrentTheme.Colors[0];
+        if (cells.Count == 0) return ThemeGen.CurrentTheme.Colors[0];
         if (cells.Count == 1) return cells[0].GetComponent<SpriteRenderer>().color;
         SpriteRenderer cellSR = cells[Random.Range(0, cells.Count)].GetComponent<SpriteRenderer>();
         return cellSR.color;
@@ -108,7 +106,8 @@ public class WorldGen : MonoBehaviour
         //worldController.SpawnParticle(toremove.transform.position, toremove.GetComponent<SpriteRenderer>().color);
         cells.Remove(toremove);
         playerController.SetPlayerColor(getRandomColorFromPlatform());
-        StartCoroutine(popAni.Pop_out(toremove, 0.75f, () => Destroy(toremove)));
+        StartCoroutine(popAni.Pop_out(toremove, 0.75f, () => toremove.SetActive(false)));
+        //StartCoroutine(popAni.Pop_out(toremove, 0.75f, () => Destroy(toremove)));
     }
     private bool IsSameColor(GameObject cell, GameObject player)
     {

@@ -9,4 +9,10 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("Main");
     }
+
+    public void ToggleDarkMode()
+    {
+        ThemeGen.CurrentTheme.IsDarkMode = !ThemeGen.CurrentTheme.IsDarkMode;
+        ThemeGen.LoadTheme();
+    }
 }

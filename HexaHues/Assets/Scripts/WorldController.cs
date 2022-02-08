@@ -9,8 +9,6 @@ public class WorldController : MonoBehaviour
     [SerializeField]
     private GameObject borderObj;
     [SerializeField]
-    private GameObject groundObj;
-    [SerializeField]
     private ParticleSystem pSystem;
     private ParticleSystem.MainModule main;
     void Start()
@@ -34,11 +32,6 @@ public class WorldController : MonoBehaviour
         Camera.main.orthographicSize = size;
     }
 
-    public void SetGround(Vector2 size)
-    {
-        size *= 2;
-        groundObj.transform.localScale = size;
-    }
     public bool OutSideBorder(Vector2 val, Vector2 mouse_val)
     {
         return ((val.x <= -worldBorder.x || val.x >= worldBorder.x) && (mouse_val.x <= -worldBorder.x || mouse_val.x >= worldBorder.x))

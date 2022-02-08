@@ -8,7 +8,7 @@
     -   Music
     -   Sound effects
 -   Game Menu
-    -   Title menu
+    +   Title menu
     -   Setting menu
     -   Pause menu
 

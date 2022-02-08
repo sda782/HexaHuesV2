@@ -2,19 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ThemeGen : MonoBehaviour
 {
     private List<ColorTheme> themes;
-    private ColorTheme currentTheme;
+    private static ColorTheme currentTheme;
+    public static ColorTheme CurrentTheme { get => currentTheme; }
     void Awake()
     {
+        GameObject[] themesObj = GameObject.FindGameObjectsWithTag("Themes");
+        if (themesObj.Length > 1)
+        {
+            Destroy(this.gameObject);
+        }
+        DontDestroyOnLoad(this);
         themes = new List<ColorTheme>();
         setup_colors();
         currentTheme = GetTheme("Neon");
+        LoadTheme();
     }
-
-    public ColorTheme CurrentTheme { get => currentTheme; }
 
     public void SetTheme(string name)
     {
@@ -24,6 +31,24 @@ public class ThemeGen : MonoBehaviour
     public ColorTheme GetTheme(string name)
     {
         return themes.Find(t => t.Name == name);
+    }
+
+    public static void LoadTheme()
+    {
+        foreach (var cam in Camera.allCameras)
+        {
+            cam.backgroundColor = currentTheme.BackgroundColor;
+        }
+        Text[] texts = FindObjectsOfType<Text>();
+        foreach (var text in texts)
+        {
+            text.color = currentTheme.TextColor;
+        }
+        Button[] btns = FindObjectsOfType<Button>();
+        foreach (var btn in btns)
+        {
+            btn.image.color = currentTheme.BackgroundColor;
+        }
     }
 
     private void setup_colors()

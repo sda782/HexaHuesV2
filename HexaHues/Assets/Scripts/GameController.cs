@@ -19,14 +19,14 @@ public class GameController : MonoBehaviour
     {
         if (!isSameColor) return;
         score++;
-        text_score.text = $"{score} : score";
+        text_score.text = $"{score}P";
     }
     public void RemoveLife(bool isSameColor)
     {
         if (lives <= 0) return;
         if (isSameColor) return;
         lives--;
-        text_lives.text = $"Lives : {lives}";
+        text_lives.text = $"L{lives}";
         if (lives == 0) GameOver?.Invoke();
     }
 }

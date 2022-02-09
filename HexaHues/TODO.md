@@ -1,9 +1,7 @@
 #   TODO
-
 -   Color Theme
     +   Hardcoded colours
-    -   Dark mode
-    -   Color menu
+    +   Dark mode
 -   Sound
     -   Music
     -   Sound effects
@@ -13,7 +11,6 @@
     -   Pause menu
 
 #   Working on now
--   Touch input
 
 #   Bugs
 -   Can't die after switch level/scene
@@ -25,6 +22,7 @@
     -   All Color (can get all colors for 2s)
 
 #   Done
++   Touch input
 +   Click on platforms
 +   Randomize platform color
 +   World Generation

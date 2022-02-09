@@ -103,11 +103,9 @@ public class WorldGen : MonoBehaviour
         bool issamecolor = IsSameColor(toremove, player);
         platformRemove?.Invoke(issamecolor);
         if (!issamecolor) return;
-        //worldController.SpawnParticle(toremove.transform.position, toremove.GetComponent<SpriteRenderer>().color);
         cells.Remove(toremove);
         playerController.SetPlayerColor(getRandomColorFromPlatform());
-        StartCoroutine(popAni.Pop_out(toremove, 0.75f, () => toremove.SetActive(false)));
-        //StartCoroutine(popAni.Pop_out(toremove, 0.75f, () => Destroy(toremove)));
+        StartCoroutine(popAni.Pop_out(toremove, 0.75f, () => Destroy(toremove)));
     }
     private bool IsSameColor(GameObject cell, GameObject player)
     {

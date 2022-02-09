@@ -50,11 +50,11 @@ public class PlayerMovement : MonoBehaviour
     }
     void InputManager()
     {
-        if (Input.GetMouseButton(1)) Move(Input.mousePosition);
-        /* if (Input.touchCount > 0)
+        //if (Input.GetMouseButton(1)) Move(Input.mousePosition);
+        if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
             if (touch.phase == TouchPhase.Moved) Move(touch.position);
-        } */
+        }
     }
 }

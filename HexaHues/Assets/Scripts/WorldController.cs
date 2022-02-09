@@ -37,18 +37,4 @@ public class WorldController : MonoBehaviour
         return ((val.x <= -worldBorder.x || val.x >= worldBorder.x) && (mouse_val.x <= -worldBorder.x || mouse_val.x >= worldBorder.x))
         || ((val.y <= -worldBorder.y || val.y >= worldBorder.y) && (mouse_val.y <= -worldBorder.y || mouse_val.y >= worldBorder.y));
     }
-
-    public void SpawnParticle(Vector3 cell, Color color)
-    {
-        main.startColor = color;
-        pSystem.gameObject.transform.position = cell;
-        pSystem.Play();
-    }
-    /* public bool OutSideBorder(Vector2 val, Vector2 mouse_val)
-    {
-        bool isoutside = false;
-        if ((val.x <= -worldBorder || val.x >= worldBorder) && (mouse_val.x <= -worldBorder || mouse_val.x >= worldBorder)) isoutside = true;
-        if ((val.y <= -worldBorder || val.y >= worldBorder) && (mouse_val.y <= -worldBorder || mouse_val.y >= worldBorder)) isoutside = true;
-        return isoutside;
-    } */
 }

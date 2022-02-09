@@ -2,9 +2,7 @@
 -   Color Theme
     +   Hardcoded colours
     +   Dark mode
--   Sound
-    -   Music
-    -   Sound effects
+    -   Switching themes
 -   Game Menu
     +   Title menu
     -   Setting menu
@@ -13,7 +11,6 @@
 #   Working on now
 
 #   Bugs
--   Can't die after switch level/scene
 -   Theme get reset on death
 
 #   Ideas
@@ -22,6 +19,9 @@
     -   All Color (can get all colors for 2s)
 
 #   Done
++   Sound
+    +   Music
+    +   Sound effects
 +   Touch input
 +   Click on platforms
 +   Randomize platform color
@@ -31,3 +31,6 @@
 +   Randomize the next player color the get
 +   Point system
     +   Time based?, Point based?, progression based?
+
+#   Fixed Bugs
++   Can't die after switch level/scene

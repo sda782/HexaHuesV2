@@ -7,13 +7,18 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
     private static int score;
-    private static int lives = 3;
+    private static int lives;
     [SerializeField]
     private Text text_score;
     [SerializeField]
     private Text text_lives;
     [field: SerializeField]
     public UnityEvent GameOver;
+
+    void Start()
+    {
+        lives = 3;
+    }
 
     public void AddPoint(bool isSameColor)
     {

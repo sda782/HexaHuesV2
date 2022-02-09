@@ -15,6 +15,10 @@
 #   Working on now
 -   Touch input
 
+#   Bugs
+-   Can't die after switch level/scene
+-   Theme get reset on death
+
 #   Ideas
 -   PowerUP
     -   Turbo (2s speed boost, 10s CD)

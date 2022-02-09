@@ -42,7 +42,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Move(Vector2 pos)
     {
-
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(pos);
         if (worldController.OutSideBorder(transform.position, worldPosition)) return;
         Vector3 dir = (worldPosition - transform.position);
@@ -52,10 +51,10 @@ public class PlayerMovement : MonoBehaviour
     void InputManager()
     {
         if (Input.GetMouseButton(1)) Move(Input.mousePosition);
-        if (Input.touchCount > 0)
+        /* if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
             if (touch.phase == TouchPhase.Moved) Move(touch.position);
-        }
+        } */
     }
 }

@@ -16,9 +16,15 @@ public class TitleBackground : MonoBehaviour
             GameObject c = Instantiate(cell);
             SpriteRenderer sr = c.GetComponent<SpriteRenderer>();
             sr.color = ThemeGen.CurrentTheme.Colors[i % 5];
-            c.transform.position = new Vector2(Random.Range(-5, 6), Random.Range(-5, 6));
+            c.transform.position = GetPosToSpawn();
             cells.Add(c);
         }
+    }
+
+    private Vector2 GetPosToSpawn()
+    {
+        float rx = Screen.width;
+        return new Vector2(Random.Range(0, 6), Random.Range(-5, 6));
     }
 
     void Update()

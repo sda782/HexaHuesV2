@@ -45,7 +45,11 @@ public class PlayerMovement : MonoBehaviour
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(pos);
         if (worldController.OutSideBorder(transform.position, worldPosition)) return;
         Vector3 dir = (worldPosition - transform.position);
-        if (dir.magnitude <= 0.1f) return;
+        if (dir.magnitude <= 10.004f)
+        {
+            rb.velocity = Vector2.zero;
+            return;
+        }
         rb.AddForce(dir.normalized * speed * 100, ForceMode2D.Impulse);
     }
     void InputManager()
@@ -54,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
         /* if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
-            if (touch.phase == TouchPhase.Moved) Move(touch.position);
+            Move(touch.position);
         } */
     }
 }

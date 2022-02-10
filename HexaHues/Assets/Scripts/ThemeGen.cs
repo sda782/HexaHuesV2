@@ -6,20 +6,17 @@ using UnityEngine.UI;
 
 public class ThemeGen : MonoBehaviour
 {
-    private List<ColorTheme> themes;
+    private static List<ColorTheme> themes;
     private static ColorTheme currentTheme;
     public static ColorTheme CurrentTheme { get => currentTheme; }
     void Awake()
     {
-        GameObject[] themesObj = GameObject.FindGameObjectsWithTag("Themes");
-        if (themesObj.Length > 1)
+        if (themes == null)
         {
-            Destroy(this.gameObject);
+            themes = new List<ColorTheme>();
+            setup_colors();
+            currentTheme = GetTheme("Neon");
         }
-        DontDestroyOnLoad(this);
-        themes = new List<ColorTheme>();
-        setup_colors();
-        currentTheme = GetTheme("Neon");
         LoadTheme();
     }
 

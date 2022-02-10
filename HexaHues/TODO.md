@@ -9,9 +9,10 @@
     -   Pause menu
 
 #   Working on now
-
+-   Better title menu
+    -   Show current theme
+    
 #   Bugs
--   Theme get reset on death
 
 #   Ideas
 -   PowerUP
@@ -34,3 +35,4 @@
 
 #   Fixed Bugs
 +   Can't die after switch level/scene
++   Theme get reset on death

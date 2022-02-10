@@ -1,8 +1,4 @@
 #   TODO
--   Color Theme
-    +   Hardcoded colours
-    +   Dark mode
-    -   Switching themes
 -   Game Menu
     +   Title menu
     -   Setting menu
@@ -11,7 +7,7 @@
 #   Working on now
 -   Better title menu
     -   Show current theme
-    
+
 #   Bugs
 
 #   Ideas
@@ -32,6 +28,10 @@
 +   Randomize the next player color the get
 +   Point system
     +   Time based?, Point based?, progression based?
++   Color Theme
+    +   Hardcoded colours
+    +   Dark mode
+    +   Switching themes
 
 #   Fixed Bugs
 +   Can't die after switch level/scene

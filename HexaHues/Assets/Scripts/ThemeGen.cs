@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,9 +21,13 @@ public class ThemeGen : MonoBehaviour
         LoadTheme();
     }
 
-    public void SetTheme(string name)
+    public static void SwitchTheme()
     {
-        currentTheme = GetTheme(name);
+        int index = themes.FindIndex(t => t == currentTheme);
+        int nextindex = index++ == themes.Count - 1 ? 0 : index;
+        bool rememberDarkMode = currentTheme.IsDarkMode;
+        currentTheme = themes[nextindex];
+        currentTheme.IsDarkMode = rememberDarkMode;
     }
 
     public ColorTheme GetTheme(string name)

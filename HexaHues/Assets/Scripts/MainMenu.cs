@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField]
+    private TitleBackground titleBackground;
     public void StartGame()
     {
         SceneManager.LoadScene("Main");
@@ -14,5 +16,12 @@ public class MainMenu : MonoBehaviour
     {
         ThemeGen.CurrentTheme.IsDarkMode = !ThemeGen.CurrentTheme.IsDarkMode;
         ThemeGen.LoadTheme();
+    }
+
+    public void SwitchTheme()
+    {
+        ThemeGen.SwitchTheme();
+        titleBackground.UpdateColors();
+
     }
 }

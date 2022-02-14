@@ -6,7 +6,7 @@
 
 #   Working on now
 -   Better title menu
-    -   Show current theme
+    +   Show current theme
 
 #   Bugs
 

@@ -3,10 +3,12 @@
     +   Title menu
     -   Setting menu
     -   Pause menu
+-   Touch Controls
+-   Ads :D
+-   Leader Boards
+-   Account system
 
 #   Working on now
--   Better title menu
-    +   Show current theme
 
 #   Bugs
 
@@ -14,6 +16,9 @@
 -   PowerUP
     -   Turbo (2s speed boost, 10s CD)
     -   All Color (can get all colors for 2s)
+-   More Modes
+    -   Jiggle Mode (all cells have physics)
+
 
 #   Done
 +   Sound
@@ -32,6 +37,8 @@
     +   Hardcoded colours
     +   Dark mode
     +   Switching themes
++   Better title menu
+    +   Show current theme
 
 #   Fixed Bugs
 +   Can't die after switch level/scene

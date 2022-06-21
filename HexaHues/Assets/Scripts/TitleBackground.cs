@@ -10,11 +10,10 @@ public class TitleBackground : MonoBehaviour
     private List<GameObject> cells;
     private float speed = 5;
     private float Height = 4;
-    private float Width = 4;
+    private float Width = 7.1f;
     void Start()
     {
-        Width = 4 / 1.7777777f;
-        Debug.Log($"{Width}, {Height}");
+        if (Screen.width < Screen.height) Width = 4 / 1.7777777f;
         cells = new List<GameObject>();
         for (int i = 0; i < 40; i++)
         {

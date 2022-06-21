@@ -7,6 +7,7 @@
 -   Ads :D
 -   Leader Boards
 -   Account system
+-   Theme customization 
 
 #   Working on now
 

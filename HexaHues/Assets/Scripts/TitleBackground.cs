@@ -15,7 +15,7 @@ public class TitleBackground : MonoBehaviour
     {
         if (Screen.width < Screen.height) Width = 4 / 1.7777777f;
         cells = new List<GameObject>();
-        for (int i = 0; i < 40; i++)
+        for (int i = 0; i < 50; i++)
         {
             GameObject c = Instantiate(cell);
             c.AddComponent(typeof(CircleCollider2D));
@@ -23,7 +23,6 @@ public class TitleBackground : MonoBehaviour
             c.GetComponent<Rigidbody2D>().gravityScale = 0;
             SpriteRenderer sr = c.GetComponent<SpriteRenderer>();
             sr.color = ThemeGen.CurrentTheme.Colors[i % 5];
-            //c.transform.position = GetPosToSpawn();
             c.transform.position = GetRandomPointInBound();
             cells.Add(c);
         }
@@ -35,12 +34,6 @@ public class TitleBackground : MonoBehaviour
         return new Vector2(Random.Range(-Width, Width), Random.Range(-Height, Height));
     }
 
-    private Vector2 GetPosToSpawn()
-    {
-        float rx = Screen.width;
-        return new Vector2(Random.Range(0, 6), Random.Range(-5, 6));
-    }
-
     void Update()
     {
         foreach (GameObject c in cells)
@@ -49,8 +42,6 @@ public class TitleBackground : MonoBehaviour
             Rigidbody2D rb = c.GetComponent<Rigidbody2D>();
             rb.AddForce(dir);
             if (!isInside(c.transform.position)) rb.velocity = -rb.velocity;
-
-            //c.transform.position = new Vector2(c.transform.position.x, c.transform.position.y <= -5 ? Random.Range(4, 7) : c.transform.position.y - Time.deltaTime * speed);
         }
     }
 

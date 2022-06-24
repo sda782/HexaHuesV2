@@ -54,7 +54,10 @@ public class PlayerMovement : MonoBehaviour
     }
     void InputManager()
     {
+        //for mouse input
         if (Input.GetMouseButton(1)) Move(Input.mousePosition);
+
+        //for touch input
         /* if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);

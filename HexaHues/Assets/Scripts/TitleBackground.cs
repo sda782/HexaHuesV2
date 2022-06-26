@@ -8,7 +8,6 @@ public class TitleBackground : MonoBehaviour
     [SerializeField]
     private GameObject cell;
     private List<GameObject> cells;
-    private float speed = 5;
     private float Height = 4;
     private float Width = 7.1f;
     void Start()

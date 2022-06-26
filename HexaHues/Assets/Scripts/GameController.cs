@@ -9,8 +9,9 @@ public class GameController : MonoBehaviour
     private static int score;
     private static int lives;
     [SerializeField]
-    private Text text_score;
+    private GameObject[] livesUI;
     [SerializeField]
+    private Text text_score;
     private Text text_lives;
     [field: SerializeField]
     public UnityEvent GameOver;
@@ -18,6 +19,10 @@ public class GameController : MonoBehaviour
     void Start()
     {
         lives = 3;
+        foreach (var life in livesUI)
+        {
+            life.SetActive(true);
+        }
     }
 
     public void AddPoint(bool isSameColor)
@@ -31,7 +36,7 @@ public class GameController : MonoBehaviour
         if (lives <= 0) return;
         if (isSameColor) return;
         lives--;
-        text_lives.text = $"L{lives}";
+        livesUI[lives].SetActive(false);
         if (lives == 0) GameOver?.Invoke();
     }
 }

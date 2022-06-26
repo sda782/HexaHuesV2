@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private bool timerStarted;
     private float timer;
+    [SerializeField]
+    private GameObject TimerIndicator;
     void Start()
     {
         timerStarted = false;
@@ -37,16 +39,26 @@ public class PlayerController : MonoBehaviour
             {
                 timerStarted = true;
                 timer = 0;
+                TimerIndicator.transform.localScale = Vector2.one;
             }
-            else timer += Time.deltaTime;
+            else
+            {
+                timer += Time.deltaTime;
+                TimerIndicator.transform.localScale += new Vector3(0.001f, 0.001f, 0);
+            }
             if (timer >= 1)
             {
                 TriggerPlatform();
                 timer = 0;
+                TimerIndicator.transform.localScale = Vector2.one;
                 timerStarted = false;
             }
         }
-        else timerStarted = false;
+        else
+        {
+            timerStarted = false;
+            TimerIndicator.transform.localScale = Vector2.one;
+        }
     }
 
     private void TriggerPlatform()
@@ -59,5 +71,6 @@ public class PlayerController : MonoBehaviour
         tr.startColor = color;
         tr.endColor = color;
         sr.color = color;
+        TimerIndicator.GetComponent<SpriteRenderer>().color = color;
     }
 }
